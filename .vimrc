@@ -36,3 +36,6 @@ set ignorecase                  " ignore case when searching
 set smartcase                   " override ignorecase if search pattern contains upper case characters
 set incsearch                   " search as characters are entered
 set hlsearch                    " highlight all matches
+
+"""" Enable backspace like normal programs
+set backspace=indent,eol,start
