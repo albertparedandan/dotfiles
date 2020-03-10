@@ -20,7 +20,9 @@ if (( $+commands[exa] )); then
         exa --classify --color=always --color-scale --all --ignore-glob ".git$ignore" --long --git --header
     }
 
-    alias lg='exa --classify --color=always --color-scale --grid --all --ignore-glob ".git" --long --git --header'
+    alias lgd='exa --classify --color=always --color-scale --grid --all --ignore-glob ".git" --long --git --header'
+
+    alias lg='exa --classify --color=always --color-scale --grid --all --ignore-glob ".*" --long --git --header'
 
     function lgi() {
         local ignore=""
