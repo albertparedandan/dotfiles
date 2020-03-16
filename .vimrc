@@ -14,10 +14,10 @@ endif
 set clipboard=unnamed
 
 """" Space and Tabs
-set tabstop=2                   " 2 space tab
+set tabstop=4                   " 4 space tab
 set expandtab                   " use spaces for tabs
-set softtabstop=2               " 2 space tab
-set shiftwidth=2                " size of an "indent"
+set softtabstop=4               " 4 space tab
+set shiftwidth=4                " size of an "indent"
 set autoindent                  " indent new lines
 set smartindent                 " smarter autoindenting
 set linebreak                   " wrap long lines better
@@ -30,7 +30,8 @@ set cursorline                  " highlight current line
 set showmatch                   " higlight matching parenthesis
 set wildmenu                    " visual autocomplete for command menu
 set wildmode=list:longest,full  " better autocomplete menu
-
+set laststatus=2                " status bar always shown
+set statusline+=%F              " status bar always shows full path
 """" Searching
 set ignorecase                  " ignore case when searching
 set smartcase                   " override ignorecase if search pattern contains upper case characters
