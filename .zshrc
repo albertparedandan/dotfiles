@@ -121,6 +121,8 @@ setopt autocd
 #### Enable vim-mode and key bindings
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins '^a'    beginning-of-line
+bindkey -M viins '^e'    end-of-line
 
 ############################################################################
 #### Prompt
