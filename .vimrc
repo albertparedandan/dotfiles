@@ -32,6 +32,7 @@ set wildmenu                    " visual autocomplete for command menu
 set wildmode=list:longest,full  " better autocomplete menu
 set laststatus=2                " status bar always shown
 set statusline+=%F              " status bar always shows full path
+let g:airline_theme='solarized'
 """" Searching
 set ignorecase                  " ignore case when searching
 set smartcase                   " override ignorecase if search pattern contains upper case characters
