@@ -14,6 +14,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')        
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
 Plug 'Xuyuanp/nerdtree-git-plugin'
