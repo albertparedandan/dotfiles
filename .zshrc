@@ -1,6 +1,6 @@
 # Albert Paredandan
 # zsh configuration
-# Last updated: 17-03-2020
+# Last updated: 29-03-2020
 
 
 ############################################################################
@@ -96,17 +96,20 @@ if [[ -d /Applications/XAMPP/xamppfiles ]]; then
     alias stop_xampp='sudo /Applications/XAMPP/xamppfiles/xampp stop'
 fi
 
-############################################################################
-#### Misc
-
-#### Show last 10 visited directories
-alias ds="dirs -v | head -10"
-
+#### Enable hub alias
 if (( $+commands[hub] )); then
     alias g="hub"
 elif (( $+commands[git] )); then
     alias g="git"
 fi
+
+############################################################################
+#### Misc
+
+#### Show last 10 visited directories
+alias ds="dirs -v | head -10"
+setopt autopushd
+setopt pushdminus
 
 #### Solve Vim 8.1 bug giving warnings about locale EN_HK
 export LC_ALL=en_US.UTF-8
@@ -145,17 +148,16 @@ function parse_git_dirty() {
    GIT_ORIGIN_UNPUSHED=$(git log origin/$GIT_CURRENT_BRANCH..$GIT_CURRENT_BRANCH --oneline 2>&1 | awk '{ print $1 }')
    if [[ $GIT_ORIGIN_UNPUSHED != "" ]]; then
        echo -e "%F{136}${GIT_THEME_PROMPT_UNPUSHED}"
+       # echo -e ${GIT_ORIGIN_UNPUSHED} 
+   else
+       echo -e ""
    fi
 }
 
 function parse_git_branch() {
    git branch 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1) $(parse_git_dirty) /"
 }
-
 #### show vim mode on left prompt
-
-# perform parameter expansion/command substitution in prompt
-setopt PROMPT_SUBST
 
 vim_ins_mode="[i]"
 vim_cmd_mode="[n]"
@@ -173,10 +175,19 @@ function zle-line-finish {
 zle -N zle-line-finish
 
 # define right prompts
-PROMPT='%B%F{33}%~ %F{61}$(parse_git_branch)${vim_mode} %F{245}$ %f%b'
+PROMPT='%B%F{33}%~ %F{61}$(parse_git_branch)%F{245}$ %f%b'
 RPROMPT='%B%F{125}%n%F{245}@%F{166}%m%f%b'
 
 ############################################################################
 
+############################################################################
+#### Export PATH
+path+=$HOME/.emacs.d/bin
+path+=/usr/local/sbin
+path+=/Library/TeX/texbin
+export PATH
+export SUMO_HOME=/usr/local/Cellar/sumo/1.5.0/share/sumo
+
+############################################################################
 #### Neofetch
 neofetch
