@@ -1,6 +1,4 @@
 # Albert Paredandan
-# zsh configuration
-# Last updated: 29-03-2020
 
 ############################################################################
 #### Zplug
