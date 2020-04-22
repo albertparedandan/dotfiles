@@ -122,6 +122,11 @@ elif (( $+commands[git] )); then
     alias g="git"
 fi
 
+#### Alias for cp and mv prompts
+# confirm before overwrite
+alias cp="cp -i"
+alias mv="mv -i"
+
 ############################################################################
 #### Misc
 
@@ -149,7 +154,7 @@ bindkey -M viins '^e'    end-of-line
 ############################################################################
 #### Prompt
 
-# Enable parameter expansion and other substitutions in $PROMPT
+#### Enable parameter expansion and other substitutions in $PROMPT
 setopt prompt_subst
 
 function prompt_git_info {
@@ -190,10 +195,7 @@ function zle-line-finish {
 }
 zle -N zle-line-finish
 
-## define right prompts
-#PROMPT='%B%F{33}%~ %F{61}$(parse_git_branch)%F{245}$ %f%b'
-#RPROMPT='%B%F{125}%n%F{245}@%F{166}%m%f%b'
-
+#### Define the prompts
 PROMPT='%B%{$fg[blue]%}%~ %{$fg[yellow]%}$(prompt_git_info)${vim_mode} %{$fg[default]%}$ %f%b'
 RPROMPT='%B%{$fg[magenta]%}%n%{$fg[pink]%}@%{$fg[red]%}%m%f%b'
 
@@ -202,8 +204,14 @@ RPROMPT='%B%{$fg[magenta]%}%n%{$fg[pink]%}@%{$fg[red]%}%m%f%b'
 path+=$HOME/.emacs.d/bin
 path+=/usr/local/sbin
 path+=/Library/TeX/texbin
+export PATH="/usr/local/opt/node@12/bin:$PATH"
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export PATH="/Users/albertpare/Library/Python/2.7/bin:$PATH"
+export PATH="/Users/albertpare/.gem/ruby/2.6.0/bin:$PATH"
 export PATH
-export SUMO_HOME=/usr/local/Cellar/sumo/1.5.0/share/sumo
+export SUMO_HOME="/usr/local/Cellar/sumo/1.5.0/share/sumo"
+export JAVA_HOME=/usr/libexec/java_home
+export JAVA_INCLUDE_DIR=/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home/include
 
 ############################################################################
 #### Neofetch
