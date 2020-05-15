@@ -19,12 +19,12 @@ Plug 'dracula/vim',{'as':'dracula'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Change the character surrounding a word
 Plug 'tpope/vim-surround'
-" Enable color highlight in CSS files
-Plug 'ap/vim-css-color'
 
-" Show diff in vim line number area
 if has('nvim') || has('patch-8.0.902')
+  " Show diff in vim line number area
   Plug 'mhinz/vim-signify'
+  " Colourise hex colours
+  Plug 'norcalli/nvim-colorizer.lua'
 else
   Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
 endif
