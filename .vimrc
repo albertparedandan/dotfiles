@@ -19,6 +19,13 @@ Plug 'dracula/vim',{'as':'dracula'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Change the character surrounding a word
 Plug 'tpope/vim-surround'
+" Fuzzy finding
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+" Close buffer
+Plug 'qpkorr/vim-bufkill'
+" Plugin for snippet
+Plug 'honza/vim-snippets'
 
 if has('nvim') || has('patch-8.0.902')
   " Show diff in vim line number area
@@ -56,10 +63,6 @@ nnoremap <leader>/ :nohlsearch<CR>
 " remap ESC to go out of Vim terminal
 tnoremap <Esc> <C-\><C-n>
 
-" remap Leader b to switch buffers
-nnoremap <leader>b :b
-
-
 """" Space and Tabs
 " 2 space tab
 set tabstop=2
@@ -93,6 +96,8 @@ set showmatch
 set wildmenu
 " better autocomplete menu
 set wildmode=list:longest,full
+" disable show modes on command line
+set noshowmode
 
 "" Ignore case for completion in file search
 set wildignorecase
@@ -112,6 +117,8 @@ set incsearch
 set hlsearch
 " Recursively find all the files in the current folder
 set path+=**
+" Ignore some folders
+set wildignore+=*/min/*,*/vendor/*,*/node_modules/*,*/bower_components/*
 " :fn is equal to :find
 cabbrev fn find
 
@@ -125,8 +132,7 @@ map <Leader>th <C-w>t<C-w>H
 " make split from vertical to horizontal 
 map <Leader>tk <C-w>t<C-w>K
 " delete buffer
-map <Leader>bd :bd<cr>
-
+map <Leader>bd :BD<cr>
 
 """"  MISC
 " allow for copy and paste into MacOS clipboard
@@ -227,6 +233,22 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+
+"""" Coc-snippet
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
