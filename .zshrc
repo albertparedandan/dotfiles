@@ -3,7 +3,7 @@
 ############################################################################
 #### Zplug
 
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 
 if [[ -f $ZPLUG_HOME/init.zsh ]]; then
     source $ZPLUG_HOME/init.zsh
@@ -24,6 +24,11 @@ zplug "dracula/zsh", as:theme
 ##### Completion
 zstyle ':completion:*' menu select
 bindkey '^[[Z' reverse-menu-complete
+
+############################################################################
+##### NVM
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
 ############################################################################
 #### Aliases
@@ -128,6 +133,16 @@ alias mv="mv -i"
 ############################################################################
 #### Misc
 
+#### Church
+function snotes() {
+  if [ "$1" != "" ] 
+  then
+    pandoc "$1" -f docx+empty_paragraphs -t markdown-raw_attribute -s --wrap=none --indent --preserve-tabs --strip-comments -o sermon.md
+  else
+    echo "At least 1 file needed to convert sermon notes"
+  fi
+}
+
 #### Show last 10 visited directories
 alias ds="dirs -v | head -10"
 setopt autopushd
@@ -206,6 +221,7 @@ export PATH="/usr/local/opt/node@12/bin:$PATH"
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="/Users/albertpare/Library/Python/2.7/bin:$PATH"
 export PATH="/Users/albertpare/.gem/ruby/2.6.0/bin:$PATH"
+export PATH=/opt/homebrew/bin:$PATH
 export PATH
 export SUMO_HOME="/usr/local/Cellar/sumo/1.5.0/share/sumo"
 export JAVA_HOME=/usr/libexec/java_home
