@@ -1,0 +1,122 @@
+{
+  "title": "My Keychron K2",
+  "rules": [
+    {
+      "description": "EOL Left Command Alone",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_gui"
+          },
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "left_gui"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "repeat": false,
+              "key_code": "right_arrow",
+              "modifiers": [
+                "left_gui"
+              ]
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "repeat": true,
+              "key_code": "left_gui"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Delete Right Command Alone",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_gui"
+          },
+          "to": [
+            {
+              "repeat": true,
+              "key_code": "right_gui"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "repeat": false,
+              "key_code": "delete_or_backspace",
+              "modifiers": [
+                "fn"
+              ]
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "repeat": true,
+              "key_code": "right_gui"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Double Shift Toggle CapsLock",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_shift",
+            "modifiers": {
+              "mandatory": [
+                "right_shift"
+              ],
+              "optional": [
+                "caps_lock"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "caps_lock"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "left_shift"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "right_shift",
+            "modifiers": {
+              "mandatory": [
+                "left_shift"
+              ],
+              "optional": [
+                "caps_lock"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "caps_lock"
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "right_shift"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
