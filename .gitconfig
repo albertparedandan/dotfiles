@@ -21,7 +21,7 @@
     dc = diff --cached
     fp = fetch --prune
     pl = pull
-    pl = pull --rebase
+    plr = pull --rebase=interactive
     ps = push
     psf = push --force
     psuom = push --set-upstream origin master
