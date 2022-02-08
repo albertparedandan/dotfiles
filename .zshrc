@@ -153,6 +153,7 @@ export LC_ALL=en_US.UTF-8
 
 #### Case insensitive
 zstyle ':completion:*'  matcher-list 'm:{a-z}={A-Z}'
+fpath=(~/.zsh/completions $fpath) 
 autoload -U compinit && compinit
 
 #### Enter directory path to automatically cd into the directory
