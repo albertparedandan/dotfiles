@@ -24,7 +24,7 @@
     plr = pull --rebase=interactive
     ps = push
     psf = push --force
-    psuom = push --set-upstream origin master
+    psuo = push --set-upstream origin
     r = reset
     rh = reset --hard
     rb = rebase
