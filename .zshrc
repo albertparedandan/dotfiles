@@ -153,8 +153,15 @@ export LC_ALL=en_US.UTF-8
 
 #### Case insensitive
 zstyle ':completion:*'  matcher-list 'm:{a-z}={A-Z}'
+
+##### HUB Options
+## To enable hub autocompletion, visit https://github.com/github/hub/tree/master/etc#zsh
 fpath=(~/.zsh/completions $fpath) 
 autoload -U compinit && compinit
+
+## Github_token 
+#export GITHUB_TOKEN=
+
 
 #### Enter directory path to automatically cd into the directory
 setopt autocd
